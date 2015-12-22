@@ -410,7 +410,9 @@ void revaliases(struct passwd *pw)
 		while(fgets(buf, sizeof(buf), fp)) {
 			/* Make comments invisible */
 			if((p = strchr(buf, '#'))) {
-				*p = '\0';
+                        	if(strchr(buf, '=') > p) {
+					*p = '\0';
+                        	}
 			}
 
 			/* Ignore malformed lines and comments */
